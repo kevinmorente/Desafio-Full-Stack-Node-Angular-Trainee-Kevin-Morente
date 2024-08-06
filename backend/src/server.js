@@ -8,5 +8,4 @@ const server = http.createServer(app);
 openDb();
 createTable();
 
-
 server.listen(8080);

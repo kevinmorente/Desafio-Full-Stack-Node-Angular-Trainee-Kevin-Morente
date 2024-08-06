@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import usersRoute from'../routes/users.js';
 
+
 const app = express();
 
 app.use(cors());
