@@ -3,7 +3,6 @@ import cors from 'cors';
 import usersRoute from'../routes/users.js';
 import listRoute from'../routes/toDoList.js';
 
-
 const app = express();
 
 app.use(cors());

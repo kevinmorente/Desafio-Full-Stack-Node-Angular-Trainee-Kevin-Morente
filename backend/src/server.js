@@ -3,11 +3,10 @@ import { createTableToDoList } from '../Controler_SQLite/create-table-listToDo.j
 
 import http from'http';
 import app from'./index.js';
-import 'dotenv/config'
 
 const server = http.createServer(app);
+server.listen(8080);
 
 createTableUsers();
 createTableToDoList();
 
-server.listen(8080);
