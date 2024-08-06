@@ -9,17 +9,6 @@ const router = express.Router();
 const secretKey = 'KevinDevFullStack';
 
 
-//APAGAR ESSA ROTA DEPOIS
-router.get('/', async (req, res) => {
-    const db = await openDb()
-    let user = req.body;
-    const result = await db.get('SELECT email, password FROM users WHERE email=?', [user.email])
-    console.log(result);
-    await db.close()
-    return res.status(200).json({ message: "LINK PARA TESTAR APIs" })
-
-})
-
 router.post('/signup', async (req, res) => {
     const db = await openDb()
     let user = req.body;
@@ -47,17 +36,30 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
     const db = await openDb()
     let user = req.body;
-    const query = "SELECT name, email, password FROM users WHERE email=?"
+    const query = "SELECT email FROM users WHERE email=?"
     const result = await db.get(query, [user.email])
-    await db.close()
-    const isValidPassword = await bcrypt.compare(user.password, result.password)
-    if(isValidPassword){
-        const constructToken = { email: result.email, name: result.name};
-        const accessToken = jwt.sign(constructToken, secretKey, { expiresIn: '8h' });
-        console.log("JWT Token: " + accessToken);
-        return res.status(200).json({ message: "Login successful"});
-    }else{
-        return res.status(401).json({ message: "Invalid email or password" });
+    await db.close();
+    if (result === undefined) {
+        return res.status(400).json({ message: "account not exist" });
+    } else {
+        try {
+            const db = await openDb()
+            const query = "SELECT name, email, password FROM users WHERE email=?"
+            const result = await db.get(query, [user.email])
+            await db.close()
+            const isValidPassword = await bcrypt.compare(user.password, result.password)
+            if (isValidPassword) {
+                const constructToken = { email: result.email, name: result.name };
+                const accessToken = jwt.sign(constructToken, secretKey, { expiresIn: '8h' });
+                console.log("JWT Token: " + accessToken);
+                return res.status(200).json({ message: "Login successful", accessToken });
+            } else {
+                return res.status(401).json({ message: "Invalid email or password" });
+            }
+        } catch (err) {
+            console.error(err);
+            return res.status(500).json({ message: "Server Error" });
+        }
     }
 });
 
