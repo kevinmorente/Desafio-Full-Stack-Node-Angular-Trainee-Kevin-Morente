@@ -1,14 +1,15 @@
-<form class="container">
+<form class="container" [formGroup]="usersForms">
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input [id]="2" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            formControlName="email">
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <input [id]="3" type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
     </div>
     <div class="mb-3">
         <a routerLink="/signup">Click here for register!</a>
     </div>
-    <button type="submit" class="btn btn-primary">Click to Login</button>
+    <button (click)="loginFormUsers()" type="submit" class="btn btn-primary">Click to Login</button>
 </form>

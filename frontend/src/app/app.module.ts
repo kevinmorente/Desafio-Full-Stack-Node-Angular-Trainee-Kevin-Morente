@@ -9,6 +9,8 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration(),
     provideHttpClient(
       withFetch()
-    )
+    ),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
