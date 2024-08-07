@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { formUser, GlobalConstants, resString, StatusService } from '../../services/status.service';
+import { formUser, GlobalConstants, StatusService } from '../../services/status.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { SnackbarService } from '../../services/snackbar.service';
@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
     return this.statusService.registerUsers(data).subscribe((response: any) => {
       this.responseMessage = response?.message;
       this.snackbarService.openSnackbar(response.message, '');
-      this.router.navigate(['/tasks']);
+      this.router.navigate(['/login']);
     },(error) => {
       if (error.error?.message) {
         this.responseMessage = error.error?.message;

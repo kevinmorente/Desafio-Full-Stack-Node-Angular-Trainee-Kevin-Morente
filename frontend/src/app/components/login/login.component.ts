@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private snackbarService: SnackbarService,
     private router: Router,
-    private ForHeaderService: ForHeaderService
+    private ForHeaderService: ForHeaderService,
   ) { }
 
 
@@ -37,8 +37,11 @@ export class LoginComponent implements OnInit {
   loginFormUsers(){
     console.log(this.usersForms.value)
     var data = this.usersForms.value
-    return this.statusService.loginUsers(data).subscribe((response: any) => {
+    this.statusService.loginUsers(data).subscribe((response: any) => {
       this.responseMessage = response?.message;
+      const token = response.accessToken;
+      localStorage.setItem('jwtToken', token);
+      console.log('Token salvo com sucesso!' + token);
       this.snackbarService.openSnackbar(response.message, '');
       this.router.navigate(['/tasks']);
       this.ForHeaderService.changeIsDisabled.subscribe();

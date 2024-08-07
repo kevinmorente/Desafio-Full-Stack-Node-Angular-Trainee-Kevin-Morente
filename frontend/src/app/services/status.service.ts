@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-export interface resString {
-  message: string
-}
 
 export interface formUser {
   nome: string;
@@ -33,10 +30,6 @@ export class StatusService {
   private apiUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
-
-  getStatus() {
-    return this.http.get<resString>(this.apiUrl);
-  }
 
   registerUsers(form: any) {
     return this.http.post(this.apiUrl + "/users/signup", form, {
