@@ -8,6 +8,10 @@ import bcrypt from 'bcrypt';
 const router = express.Router();
 const secretKey = 'KevinDevFullStack';
 
+router.get('/', async (req, res) => {
+    return res.status(200).json({ message: "TESTANDO API NO FRONT" });
+});
+
 
 router.post('/signup', async (req, res) => {
     const db = await openDb()
