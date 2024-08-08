@@ -1,24 +1,25 @@
 <form [formGroup]="taskForm">
-<div class="container mt-3">
-    <div class="input-group mb-3">
-        <label class="input-group-text" for="inputGroupSelect01">Priority</label>
-        <select class="form-select" id="inputGroupSelect01" formControlName="priority">
-            <option selected>Choose...</option>
-            <option value="1">High</option>
-            <option value="2">Intermediate</option>
-            <option value="3">Low</option>
-        </select>
+    <div class="container mt-3">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Priority</label>
+            <select class="form-select" id="inputGroupSelect01" formControlName="priority">
+                <option selected>Choose...</option>
+                <option value="1">High</option>
+                <option value="2">Intermediate</option>
+                <option value="3">Low</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Your Task</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="task"></textarea>
+        </div>
+        <button (click)="addlistTask()" type="button" class="btn btn-primary m-1">Save new task</button>
+        <button (click)="getList()" type="button" class="btn btn-warning m-1">Click here to load your tasks, you need
+            login first!</button>
     </div>
-    <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Your Task</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="task"></textarea>
-    </div>
-    <button (click)="addlistTask()" type="button" class="btn btn-primary m-1">Save and add new task</button>
-    <button (click)="getList()" type="button" class="btn btn-warning m-1">Click here to load your tasks, you need login first!</button>
-</div>
 </form>
 
-<hr> 
+<hr>
 
 <div class="container text-center">
     <h3>TASKS</h3>
@@ -34,11 +35,11 @@
                     <p class="card-text">Your Task: {{task.task }}</p>
                     <p class="card-text">Status: {{getStatusLabel(task.status)}}</p>
                     <p class="card-text">task uuid: {{task.uuidtask}}</p>
-                    <button (click)="taskUpdate(task.uuidtask, task)" type="button" class="btn btn-primary m-1">Change Status</button>
-                    <button (click)="taskDelete(task.uuidtask)"type="button" class="btn btn-danger">Delete</button>
+                    <button (click)="taskUpdate(task.uuidtask, task)" type="button" class="btn btn-primary m-1">Change
+                        Status</button>
+                    <button (click)="taskDelete(task.uuidtask)" type="button" class="btn btn-danger">Delete</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-

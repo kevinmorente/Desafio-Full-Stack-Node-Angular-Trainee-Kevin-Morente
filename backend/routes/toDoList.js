@@ -13,7 +13,7 @@ router.post('/addtask', authenticationToken, async (req, res) => {
         const query = "INSERT INTO todolist (uuidtask, email, task, priority, status) VALUES (?, ?, ?, ?, ?)"
         await db.run(query, [uuidv4(), res.locals.email, user.task, user.priority, true])
         await db.close();
-        return res.status(201).json({ message: "Task created with successfully" });
+        return res.status(201).json({ message: "Task Created With Successfully" });
     } catch (err) {
         console.error(err);
         return res.status(500).json({ message: "Server Error" });
@@ -26,7 +26,7 @@ router.get('/gettask', authenticationToken, async (req, res) => {
         const query = "SELECT * FROM todolist WHERE email=?"
         const result = await db.all(query, [res.locals.email])
         await db.close();
-        return res.status(201).json({ message: "tasks successfully rescued", result});
+        return res.status(201).json({ message: "Tasks Successfully Rescued", result});
     } catch (err) {
         console.error(err);
         return res.status(500).json({ message: "Server Error" });
@@ -41,7 +41,7 @@ router.delete('/deletetask/:uuidtask', authenticationToken, async (req, res) => 
         console.log(result);
         await db.close();
         if (result.changes > 0) {
-            return res.status(200).json({ message: "Task successfully deleted" });
+            return res.status(200).json({ message: "Task Successfully Deleted" });
         } else {
             return res.status(404).json({ message: "Task not found" });
         }
@@ -59,7 +59,7 @@ router.put('/updatetask/:uuidtask', authenticationToken, async (req, res) => {
         const result = await db.run(query, [user.status, req.params.uuidtask, res.locals.email]);
         await db.close();
         if (result.changes > 0) {
-            return res.status(200).json({ message: "Task successfully updated" });
+            return res.status(200).json({ message: "Task successfully Changed" });
         } else {
             return res.status(404).json({ message: "Task not found or you don't have permission to update it" });
         }

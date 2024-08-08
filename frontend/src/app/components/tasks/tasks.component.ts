@@ -64,7 +64,10 @@ export class TasksComponent implements OnInit, AfterViewInit {
       this.task = response.message;
       this.taskInfos = response.result;
       console.log(this.taskInfos);
-      this.snackbarService.openSnackbar(response.message, '');
+      let length = this.taskInfos.length;
+      if (length == 0) {
+        this.snackbarService.openSnackbar("Empty to-do list!");
+      }
     }, (error) => {
       if (error.error?.message) {
         this.responseMessage = error.error?.message;
