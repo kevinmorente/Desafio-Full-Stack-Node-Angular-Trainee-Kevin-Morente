@@ -4,19 +4,19 @@
 
 ## Servidor de Desenvolvimento - Frontend
 
-1 - Instalar Node.js e npm: Certifique-se de que o Node.js e o npm (Node Package Manager) estejam instalados em sua máquina. Você pode verificar isso executando os comandos `node -v` e `npm -v`.
+1 - Instalar Node.js e npm: Certifique-se de que o Node.js e o npm estejam instalados em sua máquina. Você pode verificar isso executando os comandos `node -v` e `npm -v`.
 
 2 - Instale o Angular CLI (se ainda não estiver instalado) com o comando `npm install -g @angular/cli`.
 
 3 - Instale as dependências do projeto: Navegue até o diretório do projeto e execute `npm install` para instalar todas as dependências definidas no arquivo `package.json`.
 
-4 - Execute o projeto Angular: Após a instalação das dependências, execute `ng serve` para iniciar um servidor de desenvolvimento. Navegue até `http://localhost:4200/`. O aplicativo será recarregado automaticamente.
+4 - Execute o projeto Angular em desenvolvimento: Após a instalação das dependências, execute `ng serve` para iniciar um servidor de desenvolvimento. Navegue até `http://localhost:4200/`. O aplicativo será recarregado automaticamente.
 
-5 - Execute o comando `ng build` e todos os arquivos responsáveis por subir o site em algum host estarão disponíveis em `./dist` dentro da pasta do projeto.
+5 - Execute o projeto Angular para deploy: Execute o comando `ng build` e todos os arquivos responsáveis por subir o site em algum host estarão disponíveis em `./dist` dentro da pasta do projeto.
 
 ## Servidor de Desenvolvimento - Backend
 
-1 - Instalar Node.js e npm: Certifique-se de que o Node.js e o npm (Node Package Manager) estejam instalados em sua máquina. Você pode verificar isso executando os comandos `node -v` e `npm -v`.
+1 - Instalar Node.js e npm: Certifique-se de que o Node.js e o npm estejam instalados em sua máquina. Você pode verificar isso executando os comandos `node -v` e `npm -v`.
 
 2 - Instalar Dependências: Após baixar o projeto, abra o terminal na pasta do projeto e execute o comando `npm install` para instalar todas as dependências listadas no `package.json`.
 
