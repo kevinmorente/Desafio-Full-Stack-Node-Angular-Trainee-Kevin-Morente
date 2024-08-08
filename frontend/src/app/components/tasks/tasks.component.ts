@@ -31,7 +31,7 @@ export class TasksComponent implements OnInit, AfterViewInit {
     }
   }
 
-  getStatusLabel(status: number): string {
+  getStatusLabel(status: any): string {
     switch (status) {
       case 1:
         return 'Open task';
@@ -114,11 +114,18 @@ export class TasksComponent implements OnInit, AfterViewInit {
     })
   }
 
-  taskUpdate(taskuuid: string, ) {
-    this.TodolistService.updateTask(taskuuid).subscribe((response: any) => {
+  taskUpdate(taskuuid: string, task: any) {
+    if (task.status === 1) {
+      task.status = 2;
+    } else {
+      task.status = 1;
+    }
+    console.log(task)
+    console.log("jsonString aqui: " + task)
+    this.TodolistService.updateTask(taskuuid, task).subscribe((response: any) => {
       this.responseMessage = response?.message;
       this.snackbarService.openSnackbar(response.message, '');
-      this.getList();
+      // this.getList();
     }, (error) => {
       if (error.error?.message) {
         this.responseMessage = error.error?.message;

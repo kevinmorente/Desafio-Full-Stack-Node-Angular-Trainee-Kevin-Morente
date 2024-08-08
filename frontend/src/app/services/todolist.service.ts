@@ -40,8 +40,8 @@ export class TodolistService {
     })
   }
 
-  updateTask(taskuuid: string) {
-    return this.http.put(this.apiUrl + `/list/deletetask/${taskuuid}`, {
+  updateTask(taskuuid: string, task: any) {
+    return this.http.put(this.apiUrl + `/list/updatetask/${taskuuid}`, task, {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     })
   }

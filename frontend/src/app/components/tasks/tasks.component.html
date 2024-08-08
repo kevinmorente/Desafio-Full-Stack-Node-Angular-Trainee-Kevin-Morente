@@ -14,14 +14,14 @@
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="task"></textarea>
     </div>
     <button (click)="addlistTask()" type="button" class="btn btn-primary m-1">Save and add new task</button>
-    <button (click)="getList()" type="button" class="btn btn-primary m-1">Click here to load your tasks, you need login first!</button>
+    <button (click)="getList()" type="button" class="btn btn-warning m-1">Click here to load your tasks, you need login first!</button>
 </div>
 </form>
 
 <hr> 
 
 <div class="container text-center">
-    <h3>Tasks</h3>
+    <h3>TASKS</h3>
 </div>
 
 
@@ -31,14 +31,14 @@
             <div class="card">
                 <div class="card-body">
                     <p class="card-text">Priority: {{ getPriorityLabel(task.priority) }}</p>
-                    <p class="card-text">{{task.task }}</p>
-                    <p class="card-text">{{getStatusLabel(task.status)}}</p>
-                    <p class="card-text">task uuid</p>
-                    <p>{{task.uuidtask}}</p>
-                    <button  type="button" class="btn btn-primary m-1">Done</button>
+                    <p class="card-text">Your Task: {{task.task }}</p>
+                    <p class="card-text">Status: {{getStatusLabel(task.status)}}</p>
+                    <p class="card-text">task uuid: {{task.uuidtask}}</p>
+                    <button (click)="taskUpdate(task.uuidtask, task)" type="button" class="btn btn-primary m-1">Change Status</button>
                     <button (click)="taskDelete(task.uuidtask)"type="button" class="btn btn-danger">Delete</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+

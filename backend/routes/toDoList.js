@@ -55,8 +55,8 @@ router.put('/updatetask/:uuidtask', authenticationToken, async (req, res) => {
     try {
         let user = req.body;
         const db = await openDb();
-        const query = "UPDATE todolist SET task = ?, priority = ?, status = ? WHERE uuidtask = ? AND email = ?";
-        const result = await db.run(query, [user.task, user.priority, user.status, req.params.uuidtask, res.locals.email]);
+        const query = "UPDATE todolist SET status = ? WHERE uuidtask = ? AND email = ?";
+        const result = await db.run(query, [user.status, req.params.uuidtask, res.locals.email]);
         await db.close();
         if (result.changes > 0) {
             return res.status(200).json({ message: "Task successfully updated" });

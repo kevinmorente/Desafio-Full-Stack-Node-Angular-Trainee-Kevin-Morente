@@ -3,7 +3,6 @@ import { GlobalConstants, StatusService } from '../../services/status.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SnackbarService } from '../../services/snackbar.service';
 import { Router } from '@angular/router';
-import { ForHeaderService } from '../../shared/for-header.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +18,6 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private snackbarService: SnackbarService,
     private router: Router,
-    private ForHeaderService: ForHeaderService,
   ) { }
 
 
@@ -35,16 +33,13 @@ export class LoginComponent implements OnInit {
   }
 
   loginFormUsers(){
-    console.log(this.usersForms.value)
     var data = this.usersForms.value
     this.statusService.loginUsers(data).subscribe((response: any) => {
       this.responseMessage = response?.message;
       const token = response.accessToken;
       localStorage.setItem('jwtToken', token);
-      console.log('Token salvo com sucesso!' + token);
       this.snackbarService.openSnackbar(response.message, '');
       this.router.navigate(['/tasks']);
-      this.ForHeaderService.changeIsDisabled.subscribe();
     },(error) => {
       if (error.error?.message) {
         this.responseMessage = error.error?.message;
