@@ -1,3 +1,4 @@
+<div class="containerNew">
 <form [formGroup]="taskForm">
     <div class="container mt-3">
         <div class="input-group mb-3">
@@ -10,7 +11,7 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Your Task</label>
+            <label for="exampleFormControlTextarea1" class="form-label">Write your task here!</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="task"></textarea>
         </div>
         <button (click)="addlistTask()" type="button" class="btn btn-primary m-1">Save new task</button>
@@ -18,13 +19,9 @@
             login first!</button>
     </div>
 </form>
-
-<hr>
-
-<div class="container text-center">
-    <h3>TASKS</h3>
 </div>
 
+<hr>
 
 <div class="container text-center">
     <div class="row">

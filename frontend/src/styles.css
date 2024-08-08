@@ -2,3 +2,11 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body{
+    height: 100vh;
+    background-image: url("./assets/glass.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+}
